@@ -254,15 +254,13 @@
     .value{min-height:auto;padding:0 22px}
     .value:nth-child(3){border-left:none;padding-left:0}
     .cases-grid{grid-template-columns:1fr;gap:46px}
-    /* móvil: carrusel horizontal NATIVO con swipe + scroll-snap */
-    .h-services{height:auto}
-    .h-sticky{position:relative;height:auto;overflow-x:auto;overflow-y:hidden;
-      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-      scrollbar-width:none;padding:0 6vw}
-    .h-sticky::-webkit-scrollbar{display:none}
-    .h-track{flex-direction:row;height:auto;transform:none!important;width:max-content;gap:3vw}
-    .panel{flex:0 0 88vw;height:auto;scroll-snap-align:center}
-    .panel.card{min-height:auto;padding:6vh 6vw 5vh;border-radius:14px}
+    /* móvil: MISMO efecto scroll-driven horizontal que escritorio (sin dividers) */
+    .h-services{height:380vh}
+    .h-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+    .h-track{flex-direction:row;height:100vh;will-change:transform}
+    .panel{flex:0 0 100vw;height:100vh}
+    .panel.card{padding:8vh 7vw 6vh}
+    .panel.divider{display:none}
     .panel.divider{display:none}
     .h-progress{display:none}
     .hero-text{position:relative;top:auto;transform:none;left:auto;margin-top:18vh}
@@ -585,8 +583,7 @@
     const track = document.getElementById('hTrack');
     const prog = document.getElementById('hProgress');
     if (!sec || !track) return;
-    const isMobile = matchMedia('(max-width:900px)').matches;
-    if (isMobile) return; // stacked on mobile
+    // El efecto scroll-driven horizontal funciona en escritorio Y móvil
 
     let maxX = 0;
     function measure(){ maxX = track.scrollWidth - innerWidth; }
