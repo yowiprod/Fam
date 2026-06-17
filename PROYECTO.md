@@ -51,8 +51,19 @@ Eslogan: *"Diseñamos el futuro de tu negocio."*
 
 ## Dónde está cada cosa
 - **Repositorio (código, todo versionado):** https://github.com/yowiprod/Fam (rama `main`).
+- **Dominio:** `destacamostuweb.com` registrado en **Namecheap** (NO la web — solo el dominio).
+- **Hosting de la web:** **Netlify** (sitio `destacamostuweb`). Los DNS de Namecheap apuntan a Netlify.
 - **Canva:** logos subidos como assets + un diseño "Logo Destacamos Tu Web". Cuenta `prodkillingme@gmail.com`.
 - **Google Drive:** carpeta `fam/DTW`. Cuenta `prodkillingme@gmail.com`.
+
+## Cómo actualizar la web publicada (en Netlify, NO Namecheap)
+1. `app.netlify.com` → entrar en el sitio `destacamostuweb`.
+2. Pestaña **"Deploys"**.
+3. Bajar hasta la zona *"Need to update your site? Drag and drop your site folder here"*.
+4. Arrastrar la carpeta entera **`deploy-destacamostuweb/`** (la que contiene `index.html`).
+5. En segundos verás "Published". Recargar `destacamostuweb.com` con **Ctrl + F5**.
+
+> El dominio está en Namecheap pero el hosting es Netlify. NO subir nada por cPanel/FTP de Namecheap.
 
 ## Pendientes
 - [ ] Registrar el dominio **destacamostuweb.com**.
