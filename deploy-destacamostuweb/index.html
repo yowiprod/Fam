@@ -254,13 +254,16 @@
     .value{min-height:auto;padding:0 22px}
     .value:nth-child(3){border-left:none;padding-left:0}
     .cases-grid{grid-template-columns:1fr;gap:46px}
-    /* disable horizontal scroll on mobile: stack cards */
+    /* móvil: carrusel horizontal NATIVO con swipe + scroll-snap */
     .h-services{height:auto}
-    .h-sticky{position:relative;height:auto;overflow:visible}
-    .h-track{flex-direction:column;height:auto;transform:none!important}
-    .panel{flex:none;width:100%;height:auto}
-    .panel.card{min-height:90vh;padding:14vh 7vw 8vh}
-    .panel.divider{flex:none;width:100%;height:34vh;min-height:240px}
+    .h-sticky{position:relative;height:auto;overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      scrollbar-width:none;padding:0 6vw}
+    .h-sticky::-webkit-scrollbar{display:none}
+    .h-track{flex-direction:row;height:auto;transform:none!important;width:max-content;gap:3vw}
+    .panel{flex:0 0 88vw;height:auto;scroll-snap-align:center}
+    .panel.card{min-height:auto;padding:6vh 6vw 5vh;border-radius:14px}
+    .panel.divider{display:none}
     .h-progress{display:none}
     .hero-text{position:relative;top:auto;transform:none;left:auto;margin-top:18vh}
     .hero-text p{margin-left:0}
