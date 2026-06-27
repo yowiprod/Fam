@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Bruixeta Tattoo · Especialistes en color · Sant Julià de Lòria, Andorra</title>
+<meta name="description" content="Estudi de tatuatge a Sant Julià de Lòria, Andorra. Especialistes en color. Tatuatges personalitzats per la Xin (@xinrt) i artesanies de L'Atelier. Demana cita per WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#160118;          /* morat-negre del logo (#180018) */
+  --bg-2:#22112a;
+  --bg-3:#0c000e;
+  --ink:#fbeef9;         /* blanc rosat */
+  --ink-soft:#cdb6cd;
+  --ink-dim:#8f7a93;
+  --rosa:#ffc0f0;        /* rosa dominant del logo */
+  --rosa-viu:#ff8fe6;    /* magenta-lila accent */
+  --linia:rgba(255,192,240,.16);
+  --maxw:1320px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;
+  font-size:17px;line-height:1.6;letter-spacing:.01em;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+/* ---------- tipografia titulars (wide / uppercase) ---------- */
+.kicker{
+  font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--rosa);display:inline-block;
+}
+.h-wide{
+  font-weight:800;text-transform:uppercase;line-height:.95;
+  letter-spacing:.02em;
+  transform:scaleX(1.06);transform-origin:left;
+}
+h2.section-title{
+  font-size:clamp(30px,5.2vw,62px);font-weight:800;text-transform:uppercase;
+  line-height:.94;letter-spacing:.01em;
+}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,64px);
+  transition:background .4s ease,padding .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(21,16,27,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--linia);padding:12px clamp(20px,5vw,64px);
+}
+.brand{display:flex;align-items:center;gap:13px;z-index:95}
+.brand img{width:46px;height:46px;border-radius:12px;object-fit:cover;box-shadow:0 4px 18px rgba(255,143,230,.35)}
+.brand .name{display:flex;flex-direction:column;line-height:1}
+.brand .name b{font-family:'Caveat',cursive;font-size:25px;font-weight:700;color:var(--rosa)}
+.brand .name span{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+nav.desktop{display:flex;align-items:center;gap:34px}
+nav.desktop a{font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s}
+nav.desktop a:hover{color:var(--ink)}
+.btn-cita{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--rosa);color:#1f0320;font-weight:700;font-size:13px;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 20px;border-radius:100px;transition:transform .25s,background .25s,box-shadow .25s;
+}
+.btn-cita:hover{background:var(--rosa-viu);color:#1f0320;transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,143,230,.45)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;z-index:95;padding:6px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+
+/* menu mobil overlay */
+.mobile-menu{
+  position:fixed;inset:0;background:var(--bg-3);z-index:92;
+  display:flex;flex-direction:column;justify-content:center;gap:6px;
+  padding:0 clamp(24px,8vw,64px);
+  transform:translateX(100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{
+  font-size:clamp(34px,9vw,58px);font-weight:800;text-transform:uppercase;
+  letter-spacing:.01em;padding:10px 0;border-bottom:1px solid var(--linia);
+  color:var(--ink);display:flex;justify-content:space-between;align-items:center;
+}
+.mobile-menu a span{font-size:14px;color:var(--rosa)}
+.mm-foot{margin-top:34px;display:flex;gap:22px;font-size:14px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:90px}
+.hero-greets{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:.04em;z-index:1;pointer-events:none;overflow:hidden}
+.greet-row{
+  white-space:nowrap;font-weight:800;text-transform:uppercase;
+  font-size:clamp(58px,13vw,180px);line-height:.92;
+  color:transparent;-webkit-text-stroke:1.4px rgba(255,192,240,.24);
+  will-change:transform;
+}
+.hero-photo{
+  position:relative;z-index:3;width:clamp(280px,38vw,470px);aspect-ratio:3/4;
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,192,240,.2);
+  will-change:transform;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-tag{
+  position:absolute;z-index:4;left:clamp(20px,5vw,64px);bottom:clamp(28px,6vh,60px);
+  max-width:min(440px,80vw);
+}
+.hero-tag .big{font-family:'Caveat',cursive;font-size:clamp(34px,5vw,56px);color:var(--rosa);line-height:1;font-weight:700}
+.hero-tag p{margin-top:10px;color:var(--ink-soft);font-size:15px;max-width:330px}
+.hero-loc{
+  position:absolute;z-index:4;right:clamp(20px,5vw,64px);bottom:clamp(28px,6vh,60px);
+  text-align:right;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.hero-loc b{color:var(--ink);display:block;letter-spacing:.14em;margin-bottom:4px}
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-cue::after{content:"";width:1px;height:34px;background:linear-gradient(var(--rosa),transparent);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- intro ---------- */
+.intro{padding:clamp(90px,14vh,150px) 0;border-bottom:1px solid var(--linia)}
+.intro .big-statement{
+  font-size:clamp(28px,4.6vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.01em;
+  max-width:16ch;
+}
+.intro .big-statement em{font-style:normal;color:var(--rosa)}
+.intro-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;align-items:end;margin-top:38px}
+.intro-grid p{color:var(--ink-soft);max-width:46ch}
+.intro-grid .colorbar{height:7px;border-radius:5px;margin-top:18px;background:linear-gradient(90deg,#e8569a,#f0a6c9,#ffd166,#06d6a0,#4cc9f0,#9b5de5)}
+
+/* ---------- section heading row ---------- */
+.sec{padding:clamp(80px,12vh,130px) 0;border-bottom:1px solid var(--linia)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+.sec-head .arrow{font-size:26px;color:var(--rosa);flex-shrink:0}
+.sec-head p.sub{color:var(--ink-soft);max-width:40ch;margin-top:14px;font-size:15.5px}
+
+/* ---------- galeria ---------- */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.g-item{position:relative;overflow:hidden;border-radius:6px;background:var(--bg-2)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.g-item:hover img{transform:scale(1.06)}
+.g-item::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(15,11,20,.55));opacity:0;transition:opacity .4s}
+.g-item:hover::after{opacity:1}
+.g-item .tag{position:absolute;left:14px;bottom:12px;z-index:2;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(8px);transition:.4s}
+.g-item:hover .tag{opacity:1;transform:translateY(0)}
+.span-6{grid-column:span 6}.span-4{grid-column:span 4}.span-3{grid-column:span 3}.span-8{grid-column:span 8}
+.g-tall{aspect-ratio:3/4}.g-sq{aspect-ratio:1/1}.g-wide{aspect-ratio:4/3}
+
+/* ---------- artista ---------- */
+.artist{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.artist-photo{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.artist-photo img{width:100%;height:100%;object-fit:cover}
+.artist-photo .badge{position:absolute;left:18px;top:18px;background:var(--rosa);color:#1f0320;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:100px}
+.artist h2{font-size:clamp(44px,8vw,104px);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.artist h2 span{color:var(--rosa)}
+.artist .role{color:var(--rosa);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:600;margin:18px 0 16px}
+.artist p{color:var(--ink-soft);max-width:48ch;margin-bottom:14px}
+.artist .ig{display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--rosa);padding-bottom:3px}
+
+/* ---------- moduls (carrusel) ---------- */
+.modules{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin:0 calc(-1*clamp(20px,5vw,64px));padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px)}
+.modules::-webkit-scrollbar{height:6px}
+.modules::-webkit-scrollbar-thumb{background:var(--linia);border-radius:10px}
+.mod{flex:0 0 clamp(260px,32vw,360px);scroll-snap-align:start;border:1px solid var(--linia);border-radius:10px;overflow:hidden;background:var(--bg-2);transition:border-color .3s,transform .3s}
+.mod:hover{border-color:var(--rosa);transform:translateY(-4px)}
+.mod .ph{aspect-ratio:4/3;overflow:hidden}
+.mod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mod:hover .ph img{transform:scale(1.05)}
+.mod .body{padding:22px}
+.mod h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px}
+.mod p{font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- espai / mapa ---------- */
+.espai{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--linia);border-radius:12px;overflow:hidden}
+.espai .info{padding:clamp(34px,5vw,56px);display:flex;flex-direction:column;justify-content:center;background:var(--bg-2)}
+.espai .info .city{font-size:clamp(40px,7vw,78px);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.espai .info .city span{color:var(--rosa)}
+.espai .row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:15px}
+.espai .row b{min-width:118px;color:var(--ink-dim);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-top:2px}
+.espai .map{min-height:340px}
+.espai .map iframe{width:100%;height:100%;border:0;filter:grayscale(.3) invert(.92) hue-rotate(180deg) contrast(.9)}
+
+/* ---------- marquee ---------- */
+.marquee{padding:26px 0;border-bottom:1px solid var(--linia);overflow:hidden;white-space:nowrap;display:flex}
+.marquee .track{display:inline-flex;gap:46px;padding-right:46px;animation:scroll 26s linear infinite;flex-shrink:0}
+.marquee span{font-size:clamp(20px,3vw,34px);font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px var(--rosa);display:inline-flex;align-items:center;gap:46px}
+.marquee span::after{content:"✦";-webkit-text-stroke:0;color:var(--rosa);font-size:.6em}
+@keyframes scroll{to{transform:translateX(-100%)}}
+
+/* ---------- footer ---------- */
+footer{padding:clamp(70px,10vh,120px) 0 40px}
+.foot-links{display:flex;flex-direction:column;border-top:1px solid var(--linia)}
+.foot-links a{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,3vw,30px) 0;border-bottom:1px solid var(--linia);font-size:clamp(30px,6vw,72px);font-weight:800;text-transform:uppercase;letter-spacing:.01em;transition:color .3s,padding-left .3s}
+.foot-links a:hover{color:var(--rosa);padding-left:14px}
+.foot-links a .ar{font-size:.4em;color:var(--rosa)}
+.foot-info{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:54px;font-size:14.5px;color:var(--ink-soft)}
+.foot-info b{color:var(--ink);display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;color:var(--ink-dim)}
+.color-claim{margin-top:70px;text-align:center}
+.color-claim .txt{font-size:clamp(34px,8vw,108px);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.02em}
+.color-claim .txt em{font-style:normal;font-family:'Caveat',cursive;text-transform:none;color:var(--rosa);font-weight:700}
+.color-claim .bar{height:10px;border-radius:6px;margin:26px auto 0;max-width:560px;background:linear-gradient(90deg,#e8569a,#f0a6c9,#ffd166,#06d6a0,#4cc9f0,#9b5de5,#e8569a)}
+.legal{margin-top:54px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12.5px;color:var(--ink-dim);letter-spacing:.04em;border-top:1px solid var(--linia);padding-top:24px}
+
+/* ---------- whatsapp flotant ---------- */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .3s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ---------- reveal anim ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  nav.desktop,.header-cta{display:none}
+  .burger{display:flex}
+  .intro-grid,.artist,.espai{grid-template-columns:1fr;gap:30px}
+  .espai .map{min-height:300px;order:2}
+  .foot-info{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(6,1fr);gap:10px}
+  .span-6,.span-8{grid-column:span 6}.span-4,.span-3{grid-column:span 3}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .hero{flex-direction:column;justify-content:center;gap:26px;text-align:center;padding-top:120px}
+  .hero-photo{width:66vw;max-width:300px}
+  .hero-tag{position:static;margin:0 auto;text-align:center}
+  .hero-tag p{margin-left:auto;margin-right:auto}
+  .hero-loc{display:none}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .foot-info{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .span-6,.span-8,.span-4,.span-3{grid-column:span 2}
+  .g-tall,.g-sq,.g-wide{aspect-ratio:1/1}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <a class="brand" href="#top">
+    <img src="assets/labruixeta/logo.jpg" alt="Logo La Bruixeta Tattoo">
+    <span class="name"><b>La Bruixeta</b><span>Tattoo · Andorra</span></span>
+  </a>
+  <nav class="desktop">
+    <a href="#tatuatges">Tatuatges</a>
+    <a href="#artista">L'artista</a>
+    <a href="#atelier">Atelier</a>
+    <a href="#espai">L'espai</a>
+  </nav>
+  <a class="btn-cita header-cta" href="https://wa.me/376844753?text=Hola!%20M'agradaria%20demanar%20cita%20per%20un%20tatuatge%20a%20La%20Bruixeta%20Tattoo." target="_blank" rel="noopener">Demana cita</a>
+  <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ================= MENU MÒBIL ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#tatuatges">Tatuatges <span>01</span></a>
+  <a href="#artista">L'artista <span>02</span></a>
+  <a href="#atelier">Atelier <span>03</span></a>
+  <a href="#espai">L'espai <span>04</span></a>
+  <a href="https://wa.me/376844753" target="_blank" rel="noopener">Demana cita <span>↗</span></a>
+  <div class="mm-foot">
+    <a href="https://www.instagram.com/labruixetatattoo/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/376844753" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-greets" id="greets">
+    <div class="greet-row" data-speed="-1">Hola · Benvinguts · Olà · Ciao</div>
+    <div class="greet-row" data-speed="1">Bonjour · Hi · Kaixo · Hola</div>
+    <div class="greet-row" data-speed="-.6">Benvingut · Salut · Ola · Hi</div>
+    <div class="greet-row" data-speed=".8">Hola · Ciao · Bonjour · Olà</div>
+  </div>
+  <div class="hero-photo" id="heroPhoto">
+    <img src="assets/labruixeta/tattoo-1.jpg" alt="Tatuatge a color d'un gat — La Bruixeta Tattoo">
+  </div>
+  <div class="hero-tag">
+    <div class="big">Especialistes<br>en color</div>
+    <p>Estudi de tatuatge a Sant Julià de Lòria. Disseny propi, línia neta i molt color.</p>
+  </div>
+  <div class="hero-loc">
+    <b>Andorra 🇦🇩</b>
+    Sant Julià de Lòria<br>C/ Doctor Palau, 6
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro">
+  <div class="wrap">
+    <div class="reveal"><span class="kicker">La Bruixeta Tattoo</span></div>
+    <h2 class="big-statement reveal d1">Cada tatuatge és una <em>petita màgia</em> feta a la teva pell.</h2>
+    <div class="intro-grid">
+      <p class="reveal d2">Som un estudi de tatuatge a Andorra especialitzat en peces a color, vibrants i amb personalitat. Treballem cada disseny de manera personalitzada, des de la primera idea fins a l'última agulla, perquè t'enduguis una obra única i ben feta.</p>
+      <div class="reveal d3">
+        <p>Color · Línia fina · Cobertures · Disseny a mida</p>
+        <div class="colorbar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TATUATGES / GALERIA ================= -->
+<section class="sec" id="tatuatges">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="kicker">El nostre treball</span>
+        <h2 class="section-title" style="margin-top:14px">Els<br>tatuatges</h2>
+        <p class="sub">Una selecció de peces reals fetes a l'estudi. Color, blackwork, fine line i molt més.</p>
+      </div>
+      <a class="arrow reveal d1" href="https://www.instagram.com/labruixetatattoo/" target="_blank" rel="noopener" title="Veure més a Instagram">↗</a>
+    </div>
+    <div class="gallery">
+      <a class="g-item span-6 g-tall reveal" href="#" data-photo><img src="assets/labruixeta/tattoo-6.jpg" alt="Tatuatge pare i fill amb lletres en català"><span class="tag">Black &amp; grey · lletres</span></a>
+      <a class="g-item span-3 g-tall reveal d1" href="#" data-photo><img src="assets/labruixeta/tattoo-3.jpg" alt="Rosa i aranya"><span class="tag">Rosa · aranya</span></a>
+      <a class="g-item span-3 g-tall reveal d2" href="#" data-photo><img src="assets/labruixeta/tattoo-5.jpg" alt="Ull de la providència"><span class="tag">Ull · realisme</span></a>
+      <a class="g-item span-4 g-sq reveal" href="#" data-photo><img src="assets/labruixeta/tattoo-2.jpg" alt="Tatuatge a color"><span class="tag">Color</span></a>
+      <a class="g-item span-4 g-sq reveal d1" href="#" data-photo><img src="assets/labruixeta/tattoo-11.jpg" alt="Ulleres a color"><span class="tag">Color · old school</span></a>
+      <a class="g-item span-4 g-sq reveal d2" href="#" data-photo><img src="assets/labruixeta/tattoo-12.jpg" alt="Llamp multicolor"><span class="tag">Llamp · color</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ARTISTA ================= -->
+<section class="sec" id="artista">
+  <div class="wrap">
+    <div class="artist">
+      <div class="artist-photo reveal">
+        <span class="badge">L'artista</span>
+        <img src="assets/labruixeta/tattoo-10.jpg" alt="Tatuatge de drac — La Bruixeta Tattoo">
+      </div>
+      <div>
+        <span class="kicker reveal">Tatuadora · @xinrt</span>
+        <h2 class="reveal d1">La <span>Xin</span></h2>
+        <div class="role reveal d1">Especialista en color</div>
+        <p class="reveal d2">Darrere de La Bruixeta hi ha la Xin, tatuadora apassionada pel color i el disseny il·lustratiu. Cada peça neix d'una conversa: escolta la teva idea, la dibuixa a mida i la converteix en un tatuatge únic, net i ple de vida.</p>
+        <p class="reveal d2">A l'estudi també hi neixen les artesanies de <b>L'Atelier</b>, peces fetes a mà amb la mateixa cura i sensibilitat.</p>
+        <a class="ig reveal d3" href="https://www.instagram.com/xinrt/" target="_blank" rel="noopener">Segueix la Xin a Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODULS ================= -->
+<section class="sec" id="serveis">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="kicker">Tot a La Bruixeta</span>
+        <h2 class="section-title" style="margin-top:14px">Què fem</h2>
+      </div>
+      <span class="arrow reveal d1">→</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="modules">
+      <article class="mod reveal">
+        <div class="ph"><img src="assets/labruixeta/tattoo-7.jpg" alt="Tatuatge a color"></div>
+        <div class="body"><h3>Tatuatge a color</h3><p>La nostra especialitat: peces vibrants, saturades i amb una llum que dura anys.</p></div>
+      </article>
+      <article class="mod reveal d1">
+        <div class="ph"><img src="assets/labruixeta/tattoo-9.jpg" alt="Black & grey realisme"></div>
+        <div class="body"><h3>Black &amp; grey</h3><p>Realisme, ombres i blackwork per a qui busca elegància en blanc i negre.</p></div>
+      </article>
+      <article class="mod reveal d2">
+        <div class="ph"><img src="assets/labruixeta/tattoo-4.jpg" alt="Fine line"></div>
+        <div class="body"><h3>Fine line &amp; detall</h3><p>Línia fina i peces petites plenes de delicadesa i precisió.</p></div>
+      </article>
+      <article class="mod reveal d3">
+        <div class="ph"><img src="assets/labruixeta/tattoo-8.jpg" alt="Disseny a mida"></div>
+        <div class="body"><h3>Disseny a mida</h3><p>Portes una idea i la convertim en un disseny únic, pensat només per a tu.</p></div>
+      </article>
+      <article class="mod reveal d4" id="atelier">
+        <div class="ph" style="background:linear-gradient(135deg,var(--rosa),var(--rosa-viu));display:flex;align-items:center;justify-content:center;color:#1f0320;font-size:52px">🪄</div>
+        <div class="body"><h3>L'Atelier · Artesanies</h3><p>Peces fetes a mà a l'estudi. Descobreix-les a @labruixetaatelier.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Color</span><span>Tatuatge</span><span>Andorra</span><span>Fet a mà</span><span>Disseny propi</span><span>Bruixeria</span><span>Color</span><span>Tatuatge</span><span>Andorra</span><span>Fet a mà</span><span>Disseny propi</span><span>Bruixeria</span>
+  </div>
+</div>
+
+<!-- ================= ESPAI / MAPA ================= -->
+<section class="sec" id="espai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="kicker">On som</span>
+        <h2 class="section-title" style="margin-top:14px">L'espai</h2>
+      </div>
+    </div>
+    <div class="espai reveal d1">
+      <div class="info">
+        <div class="city">Sant Julià<br><span>de Lòria</span></div>
+        <div style="margin-top:26px">
+          <div class="row"><b>Adreça</b><span>C/ Doctor Palau, núm. 6<br>AD600 · Sant Julià de Lòria, Andorra</span></div>
+          <div class="row"><b>Cita</b><span>Amb cita prèvia · escriu-nos per WhatsApp i et donem hora.</span></div>
+          <div class="row"><b>WhatsApp</b><span>+376 844 753</span></div>
+          <div class="row" style="border:0"><b>Instagram</b><span>@labruixetatattoo · @labruixetaatelier</span></div>
+        </div>
+        <a class="btn-cita" style="margin-top:28px;align-self:flex-start" href="https://wa.me/376844753?text=Hola!%20Voldria%20demanar%20cita%20a%20La%20Bruixeta%20Tattoo." target="_blank" rel="noopener">Demana cita per WhatsApp</a>
+      </div>
+      <div class="map">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa La Bruixeta Tattoo"
+          src="https://maps.google.com/maps?q=Carrer%20Doctor%20Palau%206%20Sant%20Juli%C3%A0%20de%20L%C3%B2ria%20Andorra&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="https://wa.me/376844753?text=Hola!%20Voldria%20demanar%20cita." target="_blank" rel="noopener">Demana cita <span class="ar">↗</span></a>
+      <a href="https://www.instagram.com/labruixetatattoo/" target="_blank" rel="noopener">Instagram <span class="ar">↗</span></a>
+      <a href="https://www.instagram.com/labruixetaatelier/" target="_blank" rel="noopener">L'Atelier <span class="ar">↗</span></a>
+    </div>
+
+    <div class="foot-info">
+      <div><b>On som</b>C/ Doctor Palau, 6<br>AD600 Sant Julià de Lòria<br>Andorra 🇦🇩</div>
+      <div><b>Contacte</b>WhatsApp +376 844 753<br>Amb cita prèvia<br>@labruixetatattoo</div>
+      <div><b>Atelier</b>Artesanies fetes a mà<br>@labruixetaatelier<br>Disseny propi</div>
+    </div>
+
+    <div class="color-claim">
+      <div class="txt">Color per a <em>tothom</em></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 La Bruixeta Tattoo · Sant Julià de Lòria, Andorra</span>
+      <span>Fet amb 🪄 a Andorra</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP FLOTANT ================= -->
+<a class="wa-float" href="https://wa.me/376844753?text=Hola!%20Voldria%20demanar%20cita%20a%20La%20Bruixeta%20Tattoo." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.748-.975c.299.177.299.177 1.13.413zm5.402-15.21c-.345 0-.9.13-1.37.645-.47.516-1.797 1.756-1.797 4.28 0 2.525 1.84 4.965 2.096 5.31.257.344 3.55 5.68 8.738 7.747 4.31 1.718 5.188 1.377 6.123 1.291.935-.086 3.016-1.232 3.442-2.423.426-1.19.426-2.21.299-2.423-.128-.213-.47-.343-.985-.6z"/></svg>
+</a>
+
+<script>
+// header scroll
+const header=document.getElementById('header');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40));
+
+// menu mobil
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':''});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');document.body.style.overflow=''}));
+
+// reveal on scroll
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// parallax hero (saluts + foto) — scroll-driven
+const greets=[...document.querySelectorAll('.greet-row')];
+const heroPhoto=document.getElementById('heroPhoto');
+let ticking=false;
+addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    const y=scrollY;
+    greets.forEach(g=>{const s=parseFloat(g.dataset.speed);g.style.transform=`translateX(${y*s*0.35}px)`});
+    if(y<window.innerHeight){heroPhoto.style.transform=`translateY(${y*0.18}px) scale(${1+y*0.00012})`}
+    ticking=false;
+  });
+});
+</script>
+</body>
+</html>
