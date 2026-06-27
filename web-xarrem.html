@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XARREM · Centre de Logopèdia i Psicologia · Sant Julià de Lòria</title>
+<meta name="description" content="Centre de logopèdia i psicologia a Sant Julià de Lòria (Andorra). Logopèdia i psicologia infantil i d'adults. Conveniat amb la CASS. Demana cita: +376 844 881.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f2ec;
+    --bg-soft:#efe9df;
+    --ink:#14213a;
+    --blue:#2d4a7c;
+    --accent:#d2774e;
+    --accent-soft:#e7a47f;
+    --muted:#6a7184;
+    --line:rgba(20,33,58,.12);
+    --white:#ffffff;
+    --serif:'Instrument Serif', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#fff}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  nav.scrolled{
+    background:rgba(245,242,236,.92);
+    backdrop-filter:blur(14px);
+    padding:14px 32px;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{font-family:var(--serif);font-size:1.65rem;letter-spacing:.04em;color:var(--ink)}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:.8;transition:opacity .3s}
+  .nav-links a:hover{opacity:1}
+  .btn{
+    display:inline-block;
+    background:var(--ink);color:#fff;
+    padding:12px 24px;border-radius:40px;
+    font-size:.82rem;letter-spacing:.05em;
+    transition:transform .3s ease, background .3s ease;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--accent)}
+  .btn-accent{background:var(--accent)}
+  .btn-accent:hover{background:var(--ink)}
+  .nav-cta{padding:11px 22px}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute;inset:0;z-index:0;
+    will-change:transform;
+  }
+  .hero-media img{
+    width:100%;height:120%;object-fit:cover;object-position:center 35%;
+  }
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(20,33,58,.86) 0%, rgba(20,33,58,.55) 45%, rgba(20,33,58,.18) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;color:#fff;max-width:760px}
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent-soft);margin-bottom:26px;
+    opacity:0;transform:translateY(20px);
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.9rem,7vw,6rem);
+    line-height:1.02;letter-spacing:-.01em;
+    margin-bottom:26px;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent-soft)}
+  .hero h1 .line{display:block;opacity:0;transform:translateY(30px)}
+  .hero p.lead{
+    font-size:clamp(1.05rem,1.6vw,1.35rem);
+    max-width:520px;color:rgba(255,255,255,.88);font-weight:300;
+    margin-bottom:38px;opacity:0;transform:translateY(20px);
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+  .hero .btn{background:#fff;color:var(--ink)}
+  .hero .btn:hover{background:var(--accent);color:#fff}
+  .hero .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff}
+  .hero .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+  .hero-badge{
+    position:absolute;right:38px;bottom:42px;z-index:2;
+    display:flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.22);
+    padding:14px 20px;border-radius:16px;color:#fff;
+    opacity:0;transform:translateY(20px);
+  }
+  .hero-badge .stars{color:#ffcf6b;letter-spacing:2px;font-size:1rem}
+  .hero-badge b{font-family:var(--serif);font-size:1.5rem;font-weight:400}
+  .hero-badge small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:2;
+    color:rgba(255,255,255,.7);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-hint .dot{width:1px;height:46px;background:linear-gradient(rgba(255,255,255,.6),transparent);animation:drop 2s infinite}
+  @keyframes drop{0%{opacity:0;transform:scaleY(.2);transform-origin:top}40%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:top}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative}
+  .pad{padding:120px 0}
+  .pad-sm{padding:90px 0}
+  .label{
+    font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px;
+  }
+  .label::before{content:"";width:30px;height:1px;background:var(--accent)}
+  h2.title{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.08;letter-spacing:-.01em}
+  h2.title em{font-style:italic;color:var(--blue)}
+
+  /* ---------- INTRO ---------- */
+  .intro{background:var(--bg)}
+  .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+  .intro p.big{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.3;color:var(--ink);margin:24px 0 22px}
+  .intro p{color:var(--muted);font-size:1.02rem;margin-bottom:16px}
+  .intro-stats{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .stat{padding:34px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat:nth-child(2n){border-right:none}
+  .stat:nth-child(n+3){border-bottom:none}
+  .stat b{font-family:var(--serif);font-size:2.6rem;font-weight:400;color:var(--accent);display:block;line-height:1}
+  .stat span{font-size:.86rem;color:var(--muted);letter-spacing:.02em;margin-top:8px;display:block}
+
+  /* ---------- SERVEIS ---------- */
+  .serveis{background:var(--ink);color:#fff}
+  .serveis .label{color:var(--accent-soft)}
+  .serveis .label::before{background:var(--accent-soft)}
+  .serveis h2.title{color:#fff}
+  .serveis h2.title em{color:var(--accent-soft)}
+  .serveis-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+  .serveis-head p{color:rgba(255,255,255,.7);max-width:380px;font-weight:300}
+  .serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .serv-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;padding:42px 38px;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1), background .5s, border-color .5s;
+    position:relative;overflow:hidden;
+  }
+  .serv-card::before{
+    content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+    background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .5s ease;
+  }
+  .serv-card:hover{background:rgba(255,255,255,.07);transform:translateY(-6px);border-color:rgba(255,255,255,.2)}
+  .serv-card:hover::before{transform:scaleY(1)}
+  .serv-num{font-family:var(--serif);font-size:1rem;color:var(--accent-soft);letter-spacing:.1em}
+  .serv-card h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin:18px 0 14px;letter-spacing:-.01em}
+  .serv-card p{color:rgba(255,255,255,.68);font-size:.96rem;font-weight:300}
+  .serv-card .tags{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+  .serv-card .tags span{font-size:.74rem;letter-spacing:.04em;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.18);padding:5px 12px;border-radius:30px}
+
+  /* ---------- ESPAI (split parallax) ---------- */
+  .espai{background:var(--bg)}
+  .espai-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:80vh}
+  .espai-text{padding:100px 70px;display:flex;flex-direction:column;justify-content:center}
+  .espai-text p{color:var(--muted);margin:22px 0 14px;font-size:1.05rem}
+  .espai-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
+  .espai-list li{display:flex;gap:14px;align-items:flex-start;font-size:1rem;color:var(--ink)}
+  .espai-list li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}
+  .espai-media{position:relative;overflow:hidden}
+  .espai-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+
+  /* ---------- PER QUÈ ---------- */
+  .perque{background:var(--bg-soft)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+  .feat{padding:34px 30px;background:var(--white);border-radius:20px;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s}
+  .feat:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(20,33,58,.35)}
+  .feat .ic{width:50px;height:50px;border-radius:14px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:1.4rem}
+  .feat h3{font-family:var(--serif);font-weight:400;font-size:1.45rem;margin-bottom:10px}
+  .feat p{color:var(--muted);font-size:.95rem}
+
+  /* ---------- TESTIMONIS ---------- */
+  .testi{background:var(--ink);color:#fff;text-align:center}
+  .testi .label{justify-content:center;color:var(--accent-soft)}
+  .testi .label::before{display:none}
+  .testi h2.title{color:#fff;max-width:760px;margin:0 auto 16px}
+  .testi-google{font-size:.85rem;letter-spacing:.05em;color:rgba(255,255,255,.55);margin-bottom:54px}
+  .testi-google b{color:#ffcf6b}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+  .t-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:36px 32px;display:flex;flex-direction:column;gap:18px}
+  .t-card .stars{color:#ffcf6b;letter-spacing:2px}
+  .t-card p{font-family:var(--serif);font-size:1.35rem;line-height:1.35;color:#fff;font-style:italic}
+  .t-card .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .t-card .who .av{width:42px;height:42px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;color:#fff}
+  .t-card .who b{font-weight:600;font-size:.95rem}
+  .t-card .who small{display:block;color:rgba(255,255,255,.55);font-size:.78rem}
+
+  /* ---------- CONTACTE ---------- */
+  .contacte{background:var(--bg)}
+  .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:stretch}
+  .cont-info p.lead{color:var(--muted);font-size:1.08rem;margin:22px 0 36px;max-width:420px}
+  .cont-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-top:1px solid var(--line)}
+  .cont-row:last-of-type{border-bottom:1px solid var(--line)}
+  .cont-row .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+  .cont-row b{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .cont-row .v{font-size:1.05rem;color:var(--ink)}
+  .cont-row .v small{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+  .cont-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .map-wrap{border-radius:24px;overflow:hidden;min-height:480px;border:1px solid var(--line)}
+  .map-wrap iframe{width:100%;height:100%;min-height:480px;border:0;filter:grayscale(.2) contrast(1.05)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand .brand{font-size:2rem;color:#fff}
+  .foot-brand p{color:rgba(255,255,255,.6);max-width:320px;margin-top:16px;font-weight:300;font-size:.96rem}
+  .foot-col h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;color:rgba(255,255,255,.7);font-size:.95rem;margin-bottom:11px;transition:color .3s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:12px}
+  .foot-bottom p{color:rgba(255,255,255,.45);font-size:.82rem}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .nav-links{
+      position:fixed;inset:0 0 0 auto;width:78%;max-width:340px;
+      background:var(--ink);flex-direction:column;justify-content:center;gap:30px;
+      transform:translateX(100%);transition:transform .4s ease;padding:40px;
+    }
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{color:#fff;font-size:1rem}
+    .burger{display:flex;z-index:120}
+    .intro-grid,.cont-grid{grid-template-columns:1fr;gap:48px}
+    .serv-grid,.feat-grid,.testi-grid{grid-template-columns:1fr}
+    .espai-grid{grid-template-columns:1fr}
+    .espai-text{padding:70px 32px}
+    .espai-media{min-height:60vh}
+    .hero-badge{right:20px;bottom:20px}
+    .pad{padding:84px 0}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 20px}
+    nav{padding:16px 20px}
+    .intro-stats{grid-template-columns:1fr 1fr}
+    .hero-actions{flex-direction:column}
+    .hero-actions .btn{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="brand">XARREM<span>.</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#serveis">Serveis</a>
+    <a href="#espai">El centre</a>
+    <a href="#perque">Per què XARREM</a>
+    <a href="#testimonis">Opinions</a>
+    <a href="#contacte">Contacte</a>
+    <a href="tel:+376844881" class="btn nav-cta">Demana cita</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img src="assets/xarrem/foto-1.jpg" alt="Centre XARREM de logopèdia i psicologia a Sant Julià de Lòria">
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow" data-hero>📍 Sant Julià de Lòria · Andorra</div>
+    <h1>
+      <span class="line" data-hero>Donem veu</span>
+      <span class="line" data-hero>a cada <em>paraula</em></span>
+    </h1>
+    <p class="lead" data-hero>Centre de logopèdia i psicologia per a infants i adults. Acompanyem cada persona amb un tracte proper, professional i personalitzat.</p>
+    <div class="hero-actions" data-hero>
+      <a href="tel:+376844881" class="btn">Demana la teva cita</a>
+      <a href="#serveis" class="btn btn-ghost">Veure serveis</a>
+    </div>
+  </div>
+  <div class="hero-badge" data-hero>
+    <div>
+      <span class="stars">★★★★★</span>
+      <small>Valoració a Google</small>
+    </div>
+    <b>5,0</b>
+  </div>
+  <div class="scroll-hint"><span>Descobreix</span><span class="dot"></span></div>
+</header>
+
+<!-- INTRO -->
+<section class="intro pad">
+  <div class="wrap intro-grid">
+    <div class="reveal">
+      <div class="label">Qui som</div>
+      <h2 class="title">Un espai per <em>créixer</em>, comunicar i sentir-se bé</h2>
+      <p class="big">A XARREM creiem que la comunicació i el benestar emocional són la base d'una vida plena.</p>
+      <p>Som un centre de logopèdia i psicologia situat al cor de Sant Julià de Lòria. Treballem amb infants, adolescents i adults, adaptant cada teràpia a les necessitats reals de cada persona i la seva família.</p>
+      <p>El nostre centre està <strong>conveniat amb la CASS</strong>, per facilitar-te l'accés al tractament que necessites.</p>
+    </div>
+    <div class="intro-stats reveal d2">
+      <div class="stat"><b>5,0</b><span>Valoració mitjana a Google</span></div>
+      <div class="stat"><b>4</b><span>Àrees d'especialització</span></div>
+      <div class="stat"><b>CASS</b><span>Centre conveniat</span></div>
+      <div class="stat"><b>100%</b><span>Atenció personalitzada</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVEIS -->
+<section class="serveis pad" id="serveis">
+  <div class="wrap">
+    <div class="serveis-head">
+      <div class="reveal">
+        <div class="label">Els nostres serveis</div>
+        <h2 class="title">Logopèdia i <em>psicologia</em><br>per a totes les edats</h2>
+      </div>
+      <p class="reveal d1">Cada teràpia comença amb una valoració inicial per dissenyar un pla de treball a mida, sigui per a un infant o per a un adult.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card reveal">
+        <div class="serv-num">01</div>
+        <h3>Logopèdia infantil</h3>
+        <p>Avaluem i tractem les dificultats de la parla i el llenguatge en infants: retard del llenguatge, dislàlies, dificultats de lectoescriptura i comunicació.</p>
+        <div class="tags"><span>Parla</span><span>Llenguatge</span><span>Lectoescriptura</span></div>
+      </div>
+      <div class="serv-card reveal d1">
+        <div class="serv-num">02</div>
+        <h3>Logopèdia d'adults</h3>
+        <p>Rehabilitació de la veu, la deglució i el llenguatge en adults, incloent trastorns d'origen neurològic i reeducació de la comunicació.</p>
+        <div class="tags"><span>Veu</span><span>Deglució</span><span>Rehabilitació</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-num">03</div>
+        <h3>Psicologia infantil</h3>
+        <p>Acompanyament emocional i conductual per a infants i adolescents, amb avaluació i teràpia adaptades a cada etapa del desenvolupament.</p>
+        <div class="tags"><span>Emocions</span><span>Conducta</span><span>Famílies</span></div>
+      </div>
+      <div class="serv-card reveal d1">
+        <div class="serv-num">04</div>
+        <h3>Psicologia d'adults</h3>
+        <p>Teràpia psicològica per gestionar l'ansietat, l'estat d'ànim i els moments vitals difícils, en un entorn de confiança i confidencialitat.</p>
+        <div class="tags"><span>Ansietat</span><span>Benestar</span><span>Acompanyament</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPAI -->
+<section class="espai" id="espai">
+  <div class="espai-grid">
+    <div class="espai-text reveal">
+      <div class="label">El centre</div>
+      <h2 class="title">Un entorn <em>càlid</em> i pensat per a tu</h2>
+      <p>El nostre centre és un espai ampli, lluminós i acollidor, dissenyat perquè tant els més petits com els adults s'hi sentin còmodes des del primer moment.</p>
+      <ul class="espai-list">
+        <li>Sales adaptades per a la teràpia infantil i d'adults</li>
+        <li>Ambient tranquil i de confiança a Sant Julià de Lòria</li>
+        <li>Materials específics per a cada tipus de tractament</li>
+        <li>Atenció propera i seguiment constant de cada cas</li>
+      </ul>
+    </div>
+    <div class="espai-media">
+      <img src="assets/xarrem/foto-2.jpg" alt="Sala del centre XARREM amb racó infantil" id="espaiImg">
+    </div>
+  </div>
+</section>
+
+<!-- PER QUÈ -->
+<section class="perque pad" id="perque">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px">
+      <div class="label">Per què XARREM</div>
+      <h2 class="title">Tracte humà, resultats <em>reals</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic">🤝</div>
+        <h3>Conveniat amb la CASS</h3>
+        <p>Facilitem l'accés al tractament gràcies al conveni amb la seguretat social andorrana.</p>
+      </div>
+      <div class="feat reveal d1">
+        <div class="ic">🎯</div>
+        <h3>Teràpia personalitzada</h3>
+        <p>Cada pla de treball s'adapta a les necessitats i el ritme de cada persona i família.</p>
+      </div>
+      <div class="feat reveal d2">
+        <div class="ic">👶</div>
+        <h3>Infants i adults</h3>
+        <p>Acompanyem totes les edats, des dels primers anys fins a la vida adulta.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic">💬</div>
+        <h3>Tracte proper</h3>
+        <p>Un espai de confiança on sentir-se escoltat i acompanyat en tot moment.</p>
+      </div>
+      <div class="feat reveal d1">
+        <div class="ic">⭐</div>
+        <h3>Valorats amb un 5,0</h3>
+        <p>Les famílies que ja han confiat en nosaltres ens valoren amb la màxima puntuació.</p>
+      </div>
+      <div class="feat reveal d2">
+        <div class="ic">📍</div>
+        <h3>Al centre de Sant Julià</h3>
+        <p>Ubicació còmoda i de fàcil accés a l'Edifici el Noguer, Sant Julià de Lòria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIS -->
+<section class="testi pad" id="testimonis">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label">Opinions reals</div>
+      <h2 class="title">El que diuen les <em style="color:var(--accent-soft)">famílies</em></h2>
+      <p class="testi-google">★★★★★ &nbsp;<b>5,0</b> de mitjana · 7 ressenyes verificades a Google</p>
+    </div>
+    <div class="testi-grid">
+      <div class="t-card reveal">
+        <span class="stars">★★★★★</span>
+        <p>"Molt professional, propera i ha fet que els progressos siguin visibles en molt poc temps. 100% recomanable."</p>
+        <div class="who"><div class="av">S</div><div><b>Stéphanie B.</b><small>Ressenya a Google · Local Guide</small></div></div>
+      </div>
+      <div class="t-card reveal d1">
+        <span class="stars">★★★★★</span>
+        <p>"Molt bona feina amb els nens! Estem molt contents amb el seguiment."</p>
+        <div class="who"><div class="av">V</div><div><b>Virginia B.</b><small>Ressenya a Google · Local Guide</small></div></div>
+      </div>
+      <div class="t-card reveal d2">
+        <span class="stars">★★★★★</span>
+        <p>"Una atenció excel·lent i un tracte immillorable des del primer dia."</p>
+        <div class="who"><div class="av">W</div><div><b>Willy</b><small>Ressenya a Google · Local Guide</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTE -->
+<section class="contacte pad" id="contacte">
+  <div class="wrap cont-grid">
+    <div class="cont-info reveal">
+      <div class="label">Contacte</div>
+      <h2 class="title">Comencem <em>junts?</em></h2>
+      <p class="lead">Demana la teva primera visita i t'explicarem com et podem ajudar. Estem encantats d'atendre't.</p>
+
+      <div class="cont-row">
+        <div class="ic">📍</div>
+        <div><b>On som</b><div class="v">Edifici el Noguer, Bloc C, baixos<small>Carrer de les Escoles, 2 · AD600 Sant Julià de Lòria</small></div></div>
+      </div>
+      <div class="cont-row">
+        <div class="ic">📞</div>
+        <div><b>Telèfon</b><div class="v"><a href="tel:+376844881">+376 844 881</a></div></div>
+      </div>
+      <div class="cont-row">
+        <div class="ic">🕒</div>
+        <div><b>Horari</b><div class="v">Dilluns a dijous: 9:30 – 20:00<small>Divendres: 10:00 – 14:00 · Dissabte i diumenge: tancat</small></div></div>
+      </div>
+
+      <div class="cont-actions">
+        <a href="tel:+376844881" class="btn btn-accent">Trucar ara</a>
+        <a href="https://maps.google.com/?q=XARREM+Centre+de+Logopèdia+i+Psicologia+Sant+Julià+de+Lòria" target="_blank" rel="noopener" class="btn" style="background:var(--ink)">Com arribar</a>
+      </div>
+    </div>
+    <div class="map-wrap reveal d1">
+      <iframe
+        src="https://www.google.com/maps?q=Carrer%20de%20les%20Escoles%202%20Sant%20Juli%C3%A0%20de%20L%C3%B2ria&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicació de XARREM"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand">XARREM<span style="color:var(--accent)">.</span></span>
+        <p>Centre de logopèdia i psicologia a Sant Julià de Lòria. Acompanyem infants i adults amb un tracte proper i professional.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Serveis</h4>
+        <a href="#serveis">Logopèdia infantil</a>
+        <a href="#serveis">Logopèdia d'adults</a>
+        <a href="#serveis">Psicologia infantil</a>
+        <a href="#serveis">Psicologia d'adults</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contacte</h4>
+        <a href="tel:+376844881">+376 844 881</a>
+        <p>Carrer de les Escoles, 2<br>AD600 Sant Julià de Lòria</p>
+        <p>Dl–Dj 9:30–20:00 · Dv 10:00–14:00</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 XARREM · Centre de Logopèdia i Psicologia</p>
+      <p>Conveniat amb la CASS · Sant Julià de Lòria, Andorra</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAV scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Burger menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero entrance
+  window.addEventListener('load', () => {
+    document.querySelectorAll('[data-hero]').forEach((el,i) => {
+      setTimeout(() => { el.style.transition='opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1)'; el.style.opacity='1'; el.style.transform='none'; }, 200 + i*140);
+    });
+  });
+
+  // Parallax (hero + espai image)
+  const heroMedia = document.getElementById('heroMedia');
+  const espaiImg = document.getElementById('espaiImg');
+  let ticking = false;
+  function parallax(){
+    const y = window.scrollY;
+    if (heroMedia) heroMedia.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+    if (espaiImg){
+      const rect = espaiImg.closest('.espai-media').getBoundingClientRect();
+      const off = (rect.top - window.innerHeight/2) * -0.08;
+      espaiImg.style.transform = 'translateY(' + off + 'px) scale(1.12)';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking){ window.requestAnimationFrame(parallax); ticking = true; }
+  });
+  parallax();
+</script>
+</body>
+</html>
