@@ -198,20 +198,20 @@
   .services{background:var(--bg-soft)}
   .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
   .svc-card{
-    background:var(--bg-card);border-radius:16px;padding:36px 30px;border:1px solid var(--line);
+    background:var(--bg-card);border-radius:16px;padding:0;border:1px solid var(--line);
     transition:transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease;
     position:relative;overflow:hidden;
   }
-  .svc-card::before{
-    content:'';position:absolute;top:0;left:0;width:100%;height:3px;
-    background:linear-gradient(90deg,var(--accent),var(--blue));transform:scaleX(0);transform-origin:left;
-    transition:transform .45s ease;
-  }
   .svc-card:hover{transform:translateY(-9px);box-shadow:0 26px 50px rgba(14,77,122,.16);border-color:transparent}
-  .svc-card:hover::before{transform:scaleX(1)}
+  .svc-photo{height:180px;overflow:hidden;position:relative}
+  .svc-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(14,36,54,.18))}
+  .svc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .svc-card:hover .svc-photo img{transform:scale(1.07)}
+  .svc-body{padding:0 30px 34px}
   .svc-icon{
-    width:56px;height:56px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(150deg,#E3EEF5,#C5DBE8);margin-bottom:22px;
+    width:60px;height:60px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#E3EEF5,#C5DBE8);margin:-34px 0 20px;position:relative;z-index:2;
+    border:4px solid var(--bg-card);box-shadow:0 8px 20px rgba(14,77,122,.16);
   }
   .svc-icon svg{width:28px;height:28px;stroke:var(--blue-deep);fill:none;stroke-width:1.6}
   .svc-card h3{font-size:1.4rem;margin-bottom:12px;font-weight:600}
@@ -457,47 +457,58 @@
     </div>
     <div class="svc-grid">
       <div class="svc-card reveal" data-stagger style="--d:.04s">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5-6-10a6 6 0 0112 0c0 5-6 10-6 10z"/></svg></div>
-        <h3>Lampisteria i aigua</h3>
-        <p>Instal·lacions d'aigua, canvis de canonades, aixetes, fuites i desguassos.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Reparació de fuites i avaries</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Substitució de canonades i aixetes</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Desembussos i desguassos</li>
-        </ul>
+        <div class="svc-photo"><img src="assets/gg/servei-aigua.jpg" alt="Lampisteria i instal·lacions d'aigua" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5-6-10a6 6 0 0112 0c0 5-6 10-6 10z"/></svg></div>
+          <h3>Lampisteria i aigua</h3>
+          <p>Instal·lacions d'aigua, canvis de canonades, aixetes, fuites i desguassos.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Reparació de fuites i avaries</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Substitució de canonades i aixetes</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Desembussos i desguassos</li>
+          </ul>
+        </div>
       </div>
       <div class="svc-card reveal" data-stagger style="--d:.12s">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h3>Reformes integrals</h3>
-        <p>Reformes completes de banys, cuines, pisos i locals comercials, de principi a fi.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Banys i cuines a mida</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Enrajolats i alicatats</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Coordinació de tot el projecte</li>
-        </ul>
+        <div class="svc-photo"><img src="assets/gg/servei-reforma.jpg" alt="Reforma integral de bany" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <h3>Reformes integrals</h3>
+          <p>Reformes completes de banys, cuines, pisos i locals comercials, de principi a fi.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Banys i cuines a mida</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Enrajolats i alicatats</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Coordinació de tot el projecte</li>
+          </ul>
+        </div>
       </div>
       <div class="svc-card reveal" data-stagger style="--d:.2s">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg></div>
-        <h3>Reparacions i manteniment</h3>
-        <p>Petites reparacions, posada a punt i manteniment per a particulars i comunitats.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Avaries puntuals</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Manteniment de comunitats</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Petits arranjaments de la llar</li>
-        </ul>
+        <div class="svc-photo"><img src="assets/gg/servei-eines.jpg" alt="Eines de reparació i manteniment" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg></div>
+          <h3>Reparacions i manteniment</h3>
+          <p>Petites reparacions, posada a punt i manteniment per a particulars i comunitats.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Avaries puntuals</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Manteniment de comunitats</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Petits arranjaments de la llar</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-stagger style="--d:.28s">
+        <div class="svc-photo"><img src="assets/gg/servei-gas.jpg" alt="Instal·lació de gas i calefacció" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2c.6 3.6 4 4.9 4 8.6a4 4 0 01-8 0c0-1.3.5-2.4 1.2-3.1C9 9.7 11.5 8 12 2z"/></svg></div>
+          <h3>Calefacció, aigua calenta i gas</h3>
+          <p>Instal·lació i manteniment de calefacció, producció d'aigua calenta i instal·lacions de gas.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Calefacció i radiadors</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Escalfadors i aigua calenta</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Instal·lacions de gas</li>
+          </ul>
+        </div>
       </div>
     </div>
-      <div class="svc-card reveal" data-stagger style="--d:.28s">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2c.6 3.6 4 4.9 4 8.6a4 4 0 01-8 0c0-1.3.5-2.4 1.2-3.1C9 9.7 11.5 8 12 2z"/></svg></div>
-        <h3>Calefacció, aigua calenta i gas</h3>
-        <p>Instal·lació i manteniment de calefacció, producció d'aigua calenta i instal·lacions de gas.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Calefacció i radiadors</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Escalfadors i aigua calenta</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Instal·lacions de gas</li>
-        </ul>
-      </div>
-  </div>
 </section>
 
 <!-- ============ PROCESS ============ -->
